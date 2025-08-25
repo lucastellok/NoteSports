@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Laranjal do Jari</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    Laranjal do Jari
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home me-1"></i>
+                                Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="quadras.html">
+                                <i class="fas fa-running me-1"></i>
+                                Quadras
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reservas.html">
+                                <i class="fas fa-calendar-check me-1"></i>
+                                Reservas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="perfil.html">
+                                <i class="fas fa-user me-1"></i>
+                                Perfil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h1 id="princ">
+            <i class="fas fa-user-circle me-3"></i>
+            Meu Perfil
+        </h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="court">
+                    <h3 class="text-center mb-4">
+                        <i class="fas fa-search me-2"></i>
+                        Consultar Minhas Reservas
+                    </h3>
+                    <form id="profileForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label" id="textinhos_reservas">
+                                <i class="fas fa-user me-1"></i>
+                                Nome
+                            </label>
+                            <input type="text" class="form-control" id="name" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reservationCode" class="form-label" id="textinhos_reservas">
+                                <i class="fas fa-key me-1"></i>
+                                Código de Reserva
+                            </label>
+                            <input type="text" class="form-control" id="reservationCode" maxlength="4" placeholder="Digite o código de 4 dígitos" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-primary" id="searchButton">
+                                <i class="fas fa-search me-1"></i>
+                                Buscar Reservas
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+            <div class="col-12">
+                <h2 id="princ2" class="mt-5">
+                    <i class="fas fa-list me-3"></i>
+                    Minhas Reservas
+                </h2>
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-clock me-1"></i>Horário</th>
+                                <th><i class="fas fa-calendar me-1"></i>Data</th>
+                                <th><i class="fas fa-map-marker-alt me-1"></i>Local</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservationTableBody">
+                            <!-- Reservas preenchidas dinamicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações sobre o sistema -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="court">
+                    <h3 class="text-center mb-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Como Funciona
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-id-card fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>Código Único</h5>
+                            <p>Cada reserva possui um código único de 4 dígitos para identificação</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-database fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>Consulta Rápida</h5>
+                            <p>Digite seu código para ver todas as suas reservas ativas</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-history fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>Histórico</h5>
+                            <p>Mantenha o controle de todas as suas atividades esportivas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-5">
+        <p id="barra_baixo">
+            <i class="fas fa-copyright me-1"></i>
+            2024 Prefeitura do Laranjal do Jari. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <script>
+        document.getElementById('searchButton').addEventListener('click', function () {
+            const reservationCode = document.getElementById('reservationCode').value.trim();
+            const tableBody = document.getElementById('reservationTableBody');
+            tableBody.innerHTML = ''; // Limpa a tabela antes de preencher com os novos resultados
+
+            if (!reservationCode) {
+                alert('Por favor, insira um código de reserva.');
+                return;
+            }
+
+            // Recupera as reservas armazenadas no LocalStorage
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+            // Filtra as reservas pelo código de reserva
+            const filteredReservations = reservations.filter(reservation => reservation.codigoReserva === reservationCode);
+
+            if (filteredReservations.length === 0) {
+                alert('Nenhuma reserva encontrada para este código.');
+                return;
+            }
+
+            // Popula a tabela com as reservas filtradas
+            filteredReservations.forEach(({ horario, data, local }) => {
+                const row = document.createElement('tr');
+
+                const horarioCell = document.createElement('td');
+                horarioCell.innerHTML = `<strong>${horario}</strong>`;
+
+                const dataCell = document.createElement('td');
+                dataCell.innerHTML = `<strong>${formatDate(data)}</strong>`; // Formata a data se necessário
+
+                const localCell = document.createElement('td');
+                localCell.innerHTML = `<strong>${local}</strong>`;
+
+                row.appendChild(horarioCell);
+                row.appendChild(dataCell);
+                row.appendChild(localCell);
+
+                tableBody.appendChild(row);
+            });
+        });
+
+        // Função auxiliar para formatar a data (opcional, depende de como você está salvando as datas)
+        function formatDate(dateString) {
+            const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+            return new Date(dateString).toLocaleDateString('pt-BR', options);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

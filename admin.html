@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administração - Adicionar e Excluir Horários</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html" id="painelAdmin">Painel do Admim</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                          <!-- Links de navegação -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="adminMain" class="container mt-5">
+        <section id="formSection" class="form-section">
+            <h2>Adicionar Novo Horário</h2>
+            <form id="addReservationForm">
+                <div class="mb-3">
+                    <label for="time" class="form-label">Horário:</label>
+                    <input type="text" id="time" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="date" class="form-label">Data:</label>
+                    <input type="date" id="date" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="owner" class="form-label">Dono:</label>
+                    <input type="text" id="owner" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Local:</label>
+                    <input type="text" id="location" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="reservationCode" class="form-label">Código de Reserva:</label>
+                    <input type="text" id="reservationCode" class="form-control" maxlength="4" required>
+                </div>
+                
+                <button type="button" class="btn btn-primary" id="addReservationBtn" onclick="addReservation()">Adicionar Horário</button>
+            </form>
+        </section>
+
+        <section id="deleteSection" class="mt-5">
+            <h2>Excluir Horários Adicionados</h2>
+            <table id="adminScheduleTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Data</th>
+                        <th>Dono</th>
+                        <th>Local</th>
+                        <th>Código de Reserva</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduleList">
+                    <!-- Linhas preenchidas dinamicamente para exclusão -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        function addReservation() {
+    const horario = document.getElementById('time').value;
+    const data = document.getElementById('date').value;
+    const dono = document.getElementById('owner').value;
+    const local = document.getElementById('location').value;
+    const codigoReserva = document.getElementById('reservationCode').value;
+
+    const reservation = { horario, data, dono, local, codigoReserva };
+    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+    reservations.push(reservation);
+    localStorage.setItem('reservations', JSON.stringify(reservations));
+
+    alert('Horário adicionado com sucesso!');
+    document.getElementById('addReservationForm').reset();
+    loadAdminScheduleTable();
+}
+
+
+    
+function loadAdminScheduleTable() {
+    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+    const tableBody = document.getElementById('scheduleList');
+    tableBody.innerHTML = '';
+
+    reservations.forEach((reservation, index) => {
+        const row = document.createElement('tr');
+
+        Object.keys(reservation).forEach((key) => {
+            const cell = document.createElement('td');
+            if (key === 'data') {
+                const formattedDate = formatDate(reservation[key]);
+                cell.textContent = formattedDate;
+            } else {
+                cell.textContent = reservation[key];
+            }
+            row.appendChild(cell);
+        });
+
+        const actionCell = document.createElement('td');
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Excluir';
+        deleteButton.classList.add('btn', 'btn-danger', 'btn-sm');
+        deleteButton.onclick = () => deleteReservation(index);
+        actionCell.appendChild(deleteButton);
+        row.appendChild(actionCell);
+
+        tableBody.appendChild(row);
+    });
+}
+
+
+    
+        function formatDate(date) {
+            const dateObj = new Date(date);
+            const day = String(dateObj.getDate()).padStart(2, '0');
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            return `${day}/${month}`;
+        }
+    
+        function deleteReservation(index) {
+            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+            reservations.splice(index, 1);
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+            loadAdminScheduleTable();
+        }
+    
+        window.onload = loadAdminScheduleTable;
+    </script>
+    <div style="position: fixed; bottom: 20px; left: 20px;">
+        <a href="reservas.html" class="btn btn-dark">RESERVAS</a>
+    </div>
+    
+</body>
+</html>

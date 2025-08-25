@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas - Laranjal do Jari</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    Laranjal do Jari
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home me-1"></i>
+                                Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="quadras.html">
+                                <i class="fas fa-running me-1"></i>
+                                Quadras
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reservas.html">
+                                <i class="fas fa-calendar-check me-1"></i>
+                                Reservas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="perfil.html">
+                                <i class="fas fa-user me-1"></i>
+                                Perfil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h1 id="princ">
+            <i class="fas fa-calendar-check me-3"></i>
+            Reservas
+        </h1>
+        <p id="textinho">
+            <i class="fas fa-clock me-2"></i>
+            Veja os Horários Disponíveis Para Realizar Sua Reserva:
+        </p>
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered mt-3">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-clock me-1"></i>Horário</th>
+                                <th><i class="fas fa-calendar me-1"></i>Data</th>
+                                <th><i class="fas fa-user me-1"></i>Dono</th>
+                                <th><i class="fas fa-map-marker-alt me-1"></i>Local</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>17:00</strong></td>
+                                <td><strong>23/10</strong></td>
+                                <td><strong>Carlos Góes</strong></td>
+                                <td><strong>Juventude | Arena de Vôlei</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>18:00</strong></td>
+                                <td><strong>23/10</strong></td>
+                                <td><strong>Gabriel Amanajás</strong></td>
+                                <td><strong>Juventude | Sintético</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>19:00</strong></td>
+                                <td><strong>23/10</strong></td>
+                                <td><strong>Lucas Castelo</strong></td>
+                                <td><strong>Praça Central | Quadra Poliesportiva</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>20:00</strong></td>
+                                <td><strong>23/10</strong></td>
+                                <td><strong>Marionilo Balieiro</strong></td>
+                                <td><strong>Praça Central | Arena de Vôlei</strong></td>
+                            </tr>
+                        </tbody>
+                        <tbody id="scheduleTable">
+                            <!-- Linhas preenchidas dinamicamente via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações sobre como fazer reserva -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="court">
+                    <h3 class="text-center mb-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Como Fazer Sua Reserva
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-search fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>1. Consulte</h5>
+                            <p>Verifique os horários disponíveis na tabela acima</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-phone fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>2. Entre em Contato</h5>
+                            <p>Ligue para a prefeitura ou visite presencialmente</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-check-circle fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>3. Confirme</h5>
+                            <p>Receba seu código de reserva e aproveite!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-5">
+        <p id="barra_baixo">
+            <i class="fas fa-copyright me-1"></i>
+            2024 Prefeitura do Laranjal do Jari. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+       function loadReservationTable() {
+    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+    const tableBody = document.getElementById('scheduleTable');
+    tableBody.innerHTML = '';
+
+    reservations.forEach((reservation) => {
+        // Extraindo apenas os dados que queremos exibir na tabela
+        const { horario, data, dono, local } = reservation;
+
+        const row = document.createElement('tr');
+
+        // Criando as células
+        const horarioCell = document.createElement('td');
+        const dataCell = document.createElement('td');
+        const donoCell = document.createElement('td');
+        const localCell = document.createElement('td');
+
+        horarioCell.innerHTML = `<strong>${horario}</strong>`;
+        dataCell.innerHTML = `<strong>${formatDate(data)}</strong>`;
+        donoCell.innerHTML = `<strong>${dono}</strong>`;
+        localCell.innerHTML = `<strong>${local}</strong>`;
+
+        // Adicionando as células à linha
+        row.appendChild(horarioCell);
+        row.appendChild(dataCell);
+        row.appendChild(donoCell);
+        row.appendChild(localCell);
+
+        // Adicionando a linha à tabela
+        tableBody.appendChild(row);
+    });
+}
+
+        function formatDate(date) {
+            const dateObj = new Date(date);
+            const day = String(dateObj.getDate()).padStart(2, '0'); // Adiciona zero à esquerda se necessário
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Meses começam do 0 (Janeiro é 0)
+            return `${day}/${month}`;
+        }
+    
+        window.onload = loadReservationTable;
+    </script>
+   <div style="position: fixed; bottom: 20px; left: 20px;">
+    <a href="admin.html" class="btn btn-dark">
+        <i class="fas fa-cog me-1"></i>
+        ADMIN
+    </a>
+</div>
+</body>
+</html>
+</
