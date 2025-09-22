@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento - Laranjal do Jari</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-map-marker-alt me-2"></i>
+                    Laranjal do Jari
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">
+                                <i class="fas fa-home me-1"></i>
+                                Início
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="quadras.html">
+                                <i class="fas fa-running me-1"></i>
+                                Quadras
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reservas.html">
+                                <i class="fas fa-calendar-check me-1"></i>
+                                Reservas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="perfil.html">
+                                <i class="fas fa-user me-1"></i>
+                                Perfil
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <h1 id="princ">
+            <i class="fas fa-calendar-plus me-3"></i>
+            Solicitar Reserva
+        </h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="court">
+                    <h3 class="text-center mb-4">
+                        <i class="fas fa-clipboard-list me-2"></i>
+                        Preencha os Dados da Reserva
+                    </h3>
+                    
+                    <form id="agendamentoForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nome" class="form-label">
+                                    <i class="fas fa-user me-1"></i>
+                                    Nome Completo *
+                                </label>
+                                <input type="text" class="form-control" id="nome" required placeholder="Digite seu nome completo">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="telefone" class="form-label">
+                                    <i class="fas fa-phone me-1"></i>
+                                    Telefone *
+                                </label>
+                                <input type="tel" class="form-control" id="telefone" required placeholder="(96) 99999-9999">
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="quadra" class="form-label">
+                                    <i class="fas fa-map-marker-alt me-1"></i>
+                                    Quadra *
+                                </label>
+                                <select class="form-select" id="quadra" required>
+                                    <option value="">Selecione uma quadra</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="data" class="form-label">
+                                    <i class="fas fa-calendar me-1"></i>
+                                    Data da Reserva *
+                                </label>
+                                <input type="date" class="form-control" id="data" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-clock me-1"></i>
+                                Horário Disponível *
+                            </label>
+                            <div id="horariosContainer" class="row">
+                                <div class="col-12 text-center text-muted">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Selecione uma quadra e data para ver os horários disponíveis
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="observacoes" class="form-label">
+                                <i class="fas fa-comment me-1"></i>
+                                Observações (Opcional)
+                            </label>
+                            <textarea class="form-control" id="observacoes" rows="3" placeholder="Informações adicionais sobre a reserva"></textarea>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-1"></i>
+                                Solicitar Reserva
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Informações sobre o processo -->
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="court">
+                    <h3 class="text-center mb-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        Como Funciona o Agendamento
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-3 text-center mb-3">
+                            <i class="fas fa-edit fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>1. Preencha</h5>
+                            <p>Complete o formulário com seus dados e escolha horário</p>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <i class="fas fa-hourglass-half fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>2. Aguarde</h5>
+                            <p>Sua solicitação ficará com status "Pendente" para análise</p>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <i class="fas fa-check-circle fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>3. Aprovação</h5>
+                            <p>O administrador analisará e aprovará sua reserva</p>
+                        </div>
+                        <div class="col-md-3 text-center mb-3">
+                            <i class="fas fa-key fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>4. Código</h5>
+                            <p>Receba seu código único para acompanhar a reserva</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horários de funcionamento -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="court">
+                    <h3 class="text-center mb-4">
+                        <i class="fas fa-clock me-2"></i>
+                        Horários de Funcionamento
+                    </h3>
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-sun fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>Manhã</h5>
+                            <p>08:00 às 12:00</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-cloud-sun fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>Tarde</h5>
+                            <p>13:00 às 18:00</p>
+                        </div>
+                        <div class="col-md-4 text-center mb-3">
+                            <i class="fas fa-moon fa-2x mb-2" style="color: var(--light-orange);"></i>
+                            <h5>Noite</h5>
+                            <p>19:00 às 00:00</p>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Cada reserva tem duração de 1 hora
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-5">
+        <p id="barra_baixo">
+            <i class="fas fa-copyright me-1"></i>
+            2024 Prefeitura do Laranjal do Jari. Todos os direitos reservados.
+        </p>
+    </footer>
+
+    <!-- Modal de Sucesso -->
+    <div class="modal fade" id="sucessoModal" tabindex="-1" aria-labelledby="sucessoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="sucessoModalLabel">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Reserva Solicitada com Sucesso!
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <i class="fas fa-key fa-3x text-success mb-3"></i>
+                    <h4>Seu Código de Reserva:</h4>
+                    <h2 class="text-primary" id="codigoGerado"></h2>
+                    <p class="mt-3">Guarde este código para consultar sua reserva no perfil. Sua solicitação está com status <strong>Pendente</strong> e será analisada pelo administrador.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+                        <i class="fas fa-check me-1"></i>
+                        Entendi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const API_BASE = 'http://localhost:5000/api';
+        let horariosDisponiveis = [];
+        let horarioSelecionado = null;
+
+        // Carrega quadras ao inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página carregada, iniciando carregamento das quadras...');
+            carregarQuadras();
+            configurarDataMinima();
+            configurarEventos();
+        });
+
+        function configurarDataMinima() {
+            const hoje = new Date();
+            const dataMinima = hoje.toISOString().split('T')[0];
+            document.getElementById('data').min = dataMinima;
+        }
+
+        function configurarEventos() {
+            document.getElementById('quadra').addEventListener('change', carregarHorarios);
+            document.getElementById('data').addEventListener('change', carregarHorarios);
+            document.getElementById('agendamentoForm').addEventListener('submit', solicitarReserva);
+        }
+
+        async function carregarQuadras() {
+            console.log('Iniciando carregamento das quadras...');
+            
+            // Quadras estáticas como fallback principal
+            const quadrasEstaticas = [
+                {id: 1, nome: 'Arena de Vôlei', local: 'Praça da Juventude'},
+                {id: 2, nome: 'Quadra Poliesportiva', local: 'Praça da Juventude'},
+                {id: 3, nome: 'Campo Sintético', local: 'Praça da Juventude'},
+                {id: 4, nome: 'Arena de Vôlei', local: 'Praça Central'},
+                {id: 5, nome: 'Quadra Poliesportiva', local: 'Praça Central'},
+                {id: 6, nome: 'Quadra Poliesportiva', local: 'Quadra do Sarney'}
+            ];
+            
+            const select = document.getElementById('quadra');
+            select.innerHTML = '<option value="">Selecione uma quadra</option>';
+            
+            try {
+                console.log('Tentando carregar quadras da API...');
+                const response = await fetch(`${API_BASE}/quadras`);
+                
+                if (response.ok) {
+                    const quadras = await response.json();
+                    console.log('Quadras carregadas da API:', quadras);
+                    
+                    quadras.forEach(quadra => {
+                        const option = document.createElement('option');
+                        option.value = quadra.id;
+                        option.textContent = `${quadra.nome} - ${quadra.local}`;
+                        select.appendChild(option);
+                    });
+                } else {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+            } catch (error) {
+                console.log('Erro ao carregar quadras da API, usando fallback:', error);
+                
+                // Usar quadras estáticas
+                quadrasEstaticas.forEach(quadra => {
+                    const option = document.createElement('option');
+                    option.value = quadra.id;
+                    option.textContent = `${quadra.nome} - ${quadra.local}`;
+                    select.appendChild(option);
+                });
+            }
+            
+            console.log('Quadras carregadas. Total de opções:', select.options.length);
+        }
+
+        async function carregarHorarios() {
+            const quadraId = document.getElementById('quadra').value;
+            const data = document.getElementById('data').value;
+            
+            console.log('Carregando horários para quadra:', quadraId, 'data:', data);
+            
+            if (!quadraId || !data) {
+                document.getElementById('horariosContainer').innerHTML = 
+                    '<div class="col-12 text-center text-muted"><i class="fas fa-info-circle me-1"></i>Selecione uma quadra e data para ver os horários disponíveis</div>';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/horarios-disponiveis?data=${data}&quadra_id=${quadraId}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const horarios = await response.json();
+                console.log('Horários carregados da API:', horarios);
+                exibirHorarios(horarios);
+                
+            } catch (error) {
+                console.log('Erro ao carregar horários da API, usando fallback:', error);
+                
+                // Fallback: criar horários disponíveis manualmente
+                const horariosFallback = [];
+                for (let hora = 8; hora < 24; hora++) {
+                    horariosFallback.push({
+                        hora_inicio: `${hora.toString().padStart(2, '0')}:00`,
+                        hora_fim: `${(hora + 1).toString().padStart(2, '0')}:00`,
+                        disponivel: true
+                    });
+                }
+                console.log('Usando horários fallback:', horariosFallback);
+                exibirHorarios(horariosFallback);
+            }
+        }
+
+        function exibirHorarios(horarios) {
+            console.log('Exibindo horários:', horarios);
+            horariosDisponiveis = horarios;
+            const container = document.getElementById('horariosContainer');
+            container.innerHTML = '';
+            
+            horarios.forEach(horario => {
+                const col = document.createElement('div');
+                col.className = 'col-md-3 col-sm-4 col-6 mb-2';
+                
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = `btn w-100 ${horario.disponivel ? 'btn-outline-primary' : 'btn-outline-secondary'}`;
+                button.disabled = !horario.disponivel;
+                button.innerHTML = `
+                    <i class="fas fa-clock me-1"></i>
+                    ${horario.hora_inicio}
+                    ${horario.disponivel ? '' : '<br><small class="text-muted">Ocupado</small>'}
+                `;
+                
+                if (horario.disponivel) {
+                    button.addEventListener('click', () => selecionarHorario(horario.hora_inicio, button));
+                }
+                
+                col.appendChild(button);
+                container.appendChild(col);
+            });
+        }
+
+        function selecionarHorario(hora, buttonElement) {
+            console.log('Horário selecionado:', hora);
+            
+            // Remover seleção anterior
+            document.querySelectorAll('#horariosContainer .btn-primary').forEach(btn => {
+                btn.classList.remove('btn-primary');
+                btn.classList.add('btn-outline-primary');
+            });
+            
+            // Selecionar novo horário
+            buttonElement.classList.remove('btn-outline-primary');
+            buttonElement.classList.add('btn-primary');
+            
+            horarioSelecionado = hora;
+        }
+
+        async function solicitarReserva(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const quadraId = document.getElementById('quadra').value;
+            const data = document.getElementById('data').value;
+            const observacoes = document.getElementById('observacoes').value;
+            
+            if (!horarioSelecionado) {
+                alert('Por favor, selecione um horário disponível.');
+                return;
+            }
+            
+            console.log('Solicitando reserva:', {
+                nome, telefone, quadraId, data, 
+                hora_inicio: horarioSelecionado, observacoes
+            });
+            
+            try {
+                const response = await fetch(`${API_BASE}/solicitar-reserva`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome,
+                        telefone,
+                        quadra_id: quadraId,
+                        data_reserva: data,
+                        hora_inicio: horarioSelecionado,
+                        observacoes
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    console.log('Reserva criada com sucesso:', result);
+                    
+                    // Exibir modal de sucesso
+                    document.getElementById('codigoGerado').textContent = result.codigo_unico;
+                    const modal = new bootstrap.Modal(document.getElementById('sucessoModal'));
+                    modal.show();
+                    
+                    // Limpar formulário
+                    document.getElementById('agendamentoForm').reset();
+                    horarioSelecionado = null;
+                    document.getElementById('horariosContainer').innerHTML = 
+                        '<div class="col-12 text-center text-muted"><i class="fas fa-info-circle me-1"></i>Selecione uma quadra e data para ver os horários disponíveis</div>';
+                    
+                } else {
+                    throw new Error(result.error || 'Erro desconhecido');
+                }
+                
+            } catch (error) {
+                console.error('Erro ao solicitar reserva:', error);
+                alert('Erro ao solicitar reserva: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html>
+
